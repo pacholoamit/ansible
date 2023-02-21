@@ -1,5 +1,5 @@
 - name: Update Cloudflared on Debian
-  hosts: your_hostname_here
+  hosts: cloudflare-daemons
   become: yes
 
   tasks:
