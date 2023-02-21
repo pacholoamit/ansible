@@ -1,0 +1,22 @@
+- name: Update Cloudflared on Debian
+  hosts: your_hostname_here
+  become: yes
+
+  tasks:
+    - name: Download Cloudflared package
+      get_url:
+        url: https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+        dest: /tmp/cloudflared.deb
+
+    - name: Install Cloudflared package
+      apt:
+        deb: /tmp/cloudflared.deb
+        state: present
+
+    - name: Configure Cloudflared service
+      command: cloudflared service install {{CLOUDFLARE_CONNECTOR_TOKEN}}
+
+    - name: Remove downloaded Cloudflared package
+      file:
+        path: /tmp/cloudflared.deb
+        state: absent
