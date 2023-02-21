@@ -14,7 +14,7 @@
         state: present
 
     - name: Configure Cloudflared service
-      command: cloudflared service install {{CLOUDFLARE_CONNECTOR_TOKEN}}
+      command: cloudflared service install {{ CLOUDFLARE_CONNECTOR_TOKEN }}
 
     - name: Remove downloaded Cloudflared package
       file:
